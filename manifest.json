@@ -1,0 +1,16 @@
+{
+    "name": "Skinre",
+    "version": "0.1",
+    "description": "AI-powered skin care",
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "24": "icons/icon24.png",
+            "32": "icons/icon32.png"
+        },
+        "default_title": "Skinre",
+        "default_popup": "dist/index.html"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "manifest_version": 2
+}
