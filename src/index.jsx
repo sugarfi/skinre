@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Logo from './logo.png';
+import './index.sass';
 
 const App = (props) => {
     return (
         <>
-            <h1>skinre</h1>
+            <header>
+                <img src={Logo} />
+                <h1>Skinre</h1>
+            </header>
         </>
     );
 };
