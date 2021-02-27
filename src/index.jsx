@@ -6,7 +6,7 @@ import { Quiz } from './quiz.jsx';
 import { Calendar } from './calendar.jsx';
 
 import Logo from './logo.png';
-import './styles/index.sass';
+import './styles/index.scss';
 
 const App = (props) => {
     return (

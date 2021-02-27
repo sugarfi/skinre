@@ -1,11 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/calendar.sass';
+import styles from './styles/calendar.scss';
 
 export const Calendar = (props) => {
+    const [ scores, setScores ] = React.useState({});
+
+    React.useEffect(() => {
+        chrome.storage.sync.get({ scores: {} }, ({ scores }) => {
+            setScores(scores);
+        });
+    }, []);
+
     const toGoodDow = (dow) => [ 6, 0, 1, 2, 3, 4, 5 ][dow];
 
     const today = new Date();
+    const month = scores[today.getMonth()] || {};
+    console.log(month);
 
     const total = new Date(today.getYear(), today.getMonth() + 1, 0).getDate();
 
@@ -19,11 +29,17 @@ export const Calendar = (props) => {
         new Array(35 - total).fill(-1) 
     ].flat();
 
-    const rows = [];
+    const classNames = {
+        'red': styles.red,
+        'yellow': styles.yellow,
+        'green': styles.green,
+        'none': ''
+    };
 
+    const rows = [];
     let i;
     for (i = 0; i < 35; i += 7) {
-        rows.push(
+       rows.push( 
             <tr>
                 {
                     days.slice(i, i + 7)
@@ -31,8 +47,10 @@ export const Calendar = (props) => {
                         (i == -1) ?
                             <td className={ styles.invalid }></td>
                         :
-                            <td>
-                                <span className={ styles.topLeft }>{ i + 1 }</span>
+                            <td className={ classNames[month[i + 1] || 'none'] }>
+                                <span className={ styles.topLeft }>
+                                    { i + 1 }
+                                </span>
                             </td>
                     )
                 }
