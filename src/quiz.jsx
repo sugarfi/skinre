@@ -127,7 +127,7 @@ export const Quiz = (props) => {
                                                 setRed(red + ans.red || 0);
                                                 setYellow(yellow + ans.yellow || 0);
                                                 setGreen(green + ans.green || 0);
-                                            }}>{ ans.text }</button>
+                                            }} className={ styles.btn }>{ ans.text }</button>
                                         )
                                     }
                                 </li>
