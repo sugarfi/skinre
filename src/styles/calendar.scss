@@ -3,3 +3,49 @@
 // ok so you'll need to implement .red, .green, and .yellow for calendar cells
 // and then .invalid for calendar cells not in the current month
 // also td > span should be int he upper left corner since it's the day number
+
+@mixin userSelect($property) {
+    -webkit-user-select: ($property);
+    -moz-user-select: ($property);
+    -ms-user-select: ($property);
+    -webkit-touch-callout: ($property);
+    user-select: ($property);
+}
+
+th {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+tr {
+    padding: 5px;
+    border: 2px solid rgb(18, 156, 41);
+}
+
+.red {
+    background-color: #df2b2b;
+}
+
+.green {
+    background-color: rgb(6, 190, 21);
+}
+
+.yellow {
+    background-color: rgb(211, 255, 16);
+}
+
+.invalid {
+     pointer-events: none;
+     opacity: 0.6;
+     @include userSelect(none);
+}
+
+.topleft {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+th {
+    padding: 6px;
+}
