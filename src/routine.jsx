@@ -17,7 +17,7 @@ export const Routine = (props) => {
             <textarea onChange={(e) => {
                 setValue(e.target.value);
                 chrome.storage.sync.set({ routine: e.target.value });
-            }} value={ value }></textarea>
+            }} value={ value } rows="15" cols="40" placeholder="Type here..."></textarea>
         </>
     );
 };

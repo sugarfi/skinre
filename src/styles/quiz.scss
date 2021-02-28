@@ -5,18 +5,26 @@
 .msg {
     text-align: center;
     width: 100%;
-    background-color: rgb(228, 44, 44);
-    opacity: 0.6;
+    color: rgb(228, 44, 44);
 }
 
 .btn {
     cursor: pointer;
-    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin: 5px;
     background-color: rgb(46, 199, 191);
+    display: block;
+    color: white;
 }
 
 .btn:hover {
     background-color: rgb(22, 121, 116);
+}
+
+.submit {
+    margin: 0 auto;
 }
 
 .li {

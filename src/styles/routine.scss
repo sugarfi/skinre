@@ -1,1 +1,9 @@
 @import 'config.scss';
+
+textarea {
+    resize: none;
+    color: white;
+    background: black;
+    border: none;
+    outline: none;
+}

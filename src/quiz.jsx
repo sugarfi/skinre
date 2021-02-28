@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/tablist.scss';
-import quizStyles from './styles/quiz.scss';
+import styles from './styles/quiz.scss';
 
 export const Quiz = (props) => {
     const [ done, setDone ] = React.useState(false);
@@ -112,15 +111,15 @@ export const Quiz = (props) => {
     
     return (
         <>
-            <h1 className={quizStyles.header}>Quiz</h1>
+            <h1 className={styles.header}>Quiz</h1>
             {
                 done ?
-                <p className={ quizStyles.msg }>You have already taken the quiz today!</p> :
+                <p className={ styles.msg }>You have already taken the quiz today!</p> :
                 <>
                     <ul>
                         {
                             questions.map(q =>
-                                <li className={quizStyles.li} key={ q.text }>
+                                <li className={styles.li} key={ q.text }>
                                     { q.text }
                                     {
                                         q.answers.map(ans =>
@@ -135,7 +134,7 @@ export const Quiz = (props) => {
                             )
                         }
                     </ul>
-                    <button className={quizStyles.btn} onClick={() => {
+                    <button className={styles.btn + ' ' + styles.submit} onClick={() => {
                         const val = Math.max(red, yellow, green);
                         const today = new Date().getDate();
                         const this_month = new Date().getMonth();

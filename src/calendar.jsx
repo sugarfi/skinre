@@ -59,7 +59,7 @@ export const Calendar = (props) => {
     }
 
     return (
-        <>
+        <div>
             <h1>Calendar</h1>
             <table>
                 <thead>
@@ -77,7 +77,7 @@ export const Calendar = (props) => {
                     { rows }
                 </tbody>
             </table>
-        </>
+        </div>
     );
 };
 
