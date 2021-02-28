@@ -121,6 +121,7 @@ export const Quiz = (props) => {
                             questions.map(q =>
                                 <li className={styles.li} key={ q.text }>
                                     { q.text }
+                                    <br/>
                                     {
                                         q.answers.map(ans =>
                                             <button onClick={() => {
