@@ -43,11 +43,11 @@ export const Calendar = (props) => {
             <tr>
                 {
                     days.slice(i, i + 7)
-                    .map(i => 
+                    .map((i, idx) => 
                         (i == -1) ?
-                            <td className={ styles.invalid }></td>
+                            <td className={ styles.invalid } key={ idx }></td>
                         :
-                            <td className={ classNames[month[i + 1] || 'none'] }>
+                            <td className={ classNames[month[i + 1] || 'none'] } key={ idx }>
                                 <span className={ styles.topLeft }>
                                     { i + 1 }
                                 </span>
@@ -62,16 +62,20 @@ export const Calendar = (props) => {
         <>
             <h1>Calendar</h1>
             <table>
-                <tr>
-                    <th>mon</th>
-                    <th>tue</th>
-                    <th>wed</th>
-                    <th>thu</th>
-                    <th>fri</th>
-                    <th>sat</th>
-                    <th>sun</th>
-                </tr>
-                { rows }
+                <thead>
+                    <tr>
+                        <th>mon</th>
+                        <th>tue</th>
+                        <th>wed</th>
+                        <th>thu</th>
+                        <th>fri</th>
+                        <th>sat</th>
+                        <th>sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { rows }
+                </tbody>
             </table>
         </>
     );

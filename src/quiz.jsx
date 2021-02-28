@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom';
 import styles from './styles/tablist.scss';
 
 export const Quiz = (props) => {
+    const [ done, setDone ] = React.useState(false);
+
+    React.useEffect(() => {
+        chrome.storage.sync.get({ scores: {} }, ({ scores }) => {
+            const today = new Date().getDate();
+            const this_month = new Date().getMonth();
+            const s_this_month = scores[this_month] || {};
+            if (s_this_month[today]) {
+                setDone(true);
+            }
+        });
+    }, []);
+
     const questions = [
         {
             text: 'How many times today have you washed your skin?',
@@ -99,35 +112,41 @@ export const Quiz = (props) => {
     return (
         <>
             <h1>Quiz</h1>
-            <ul>
-                {
-                    questions.map(q =>
-                        <li>
-                            { q.text }
-                            {
-                                q.answers.map(ans =>
-                                    <button onClick={() => {
-                                        setRed(red + ans.red || 0);
-                                        setYellow(yellow + ans.yellow || 0);
-                                        setGreen(green + ans.green || 0);
-                                    }}>{ ans.text }</button>
-                                )
-                            }
-                        </li>
-                    )
-                }
-            </ul>
-            <button onClick={() => {
-                const val = Math.max(red, yellow, green);
-                const today = new Date().getDate();
-                const this_month = new Date().getMonth();
-                const for_today = val == red ? 'red' : val == yellow ? 'yellow' : val == green ? 'green' : 'yellow';
-                chrome.storage.sync.get({ scores: {} }, ({ scores }) => {
-                    const days = { ...scores, [this_month]: { ...scores[this_month], [today]: for_today } };
-                    console.log(days);
-                    chrome.storage.sync.set({ scores: days });
-                });
-            }}>Submit</button>
+            {
+                done ?
+                <p className={ styles.msg }>You have already taken the quiz today!</p> :
+                <>
+                    <ul>
+                        {
+                            questions.map(q =>
+                                <li key={ q.text }>
+                                    { q.text }
+                                    {
+                                        q.answers.map(ans =>
+                                            <button onClick={() => {
+                                                setRed(red + ans.red || 0);
+                                                setYellow(yellow + ans.yellow || 0);
+                                                setGreen(green + ans.green || 0);
+                                            }}>{ ans.text }</button>
+                                        )
+                                    }
+                                </li>
+                            )
+                        }
+                    </ul>
+                    <button onClick={() => {
+                        const val = Math.max(red, yellow, green);
+                        const today = new Date().getDate();
+                        const this_month = new Date().getMonth();
+                        const for_today = val == red ? 'red' : val == yellow ? 'yellow' : val == green ? 'green' : 'yellow';
+                        chrome.storage.sync.get({ scores: {} }, ({ scores }) => {
+                            const days = { ...scores, [this_month]: { ...scores[this_month], [today]: for_today } };
+                            console.log(days);
+                            chrome.storage.sync.set({ scores: days });
+                        });
+                    }}>Submit</button>
+                </>
+            }
         </>
     );
 };
