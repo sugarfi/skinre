@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/tablist.scss';
+import styles from './styles/quiz.scss';
 
 export const Quiz = (props) => {
     const [ done, setDone ] = React.useState(false);
