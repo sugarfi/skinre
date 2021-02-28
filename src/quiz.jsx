@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from './styles/quiz.scss';
+import styles from './styles/tablist.scss';
+import quizStyles from './styles/quiz.scss';
 
 export const Quiz = (props) => {
     const [ done, setDone ] = React.useState(false);
@@ -38,7 +39,7 @@ export const Quiz = (props) => {
             text: 'How long did you bathe for today?',
             answers: [
                 {
-                    text: '20-30 minutes',
+                    text: '20-30+ minutes',
                     red: 1
                 },
                 {
@@ -46,14 +47,14 @@ export const Quiz = (props) => {
                     yellow: 1
                 },
                 {
-                    text: '5-10 minutes',
+                    text: '0-10 minutes',
                     green: 1
                 }
 
             ]
         },
         {
-            text: 'If you have pimples, did you pop them?',
+            text: 'If you have pimples, do you pop them?',
             answers: [
                 {
                     text: 'Yes',
@@ -64,7 +65,7 @@ export const Quiz = (props) => {
                     yellow: 1
                 },
                 {
-                    text: 'I don\'t have pimples',
+                    text: 'no/I don\'t have pimples',
                     green: 1
                 }
             ]
@@ -81,7 +82,7 @@ export const Quiz = (props) => {
                     yellow: 1
                 },
                 {
-                    text: '2.7-3.7 liters',
+                    text: '2.7-3.7+ liters',
                     green: 1
                 }
             ]
@@ -111,15 +112,15 @@ export const Quiz = (props) => {
     
     return (
         <>
-            <h1>Quiz</h1>
+            <h1 className={quizStyles.header}>Quiz</h1>
             {
                 done ?
-                <p className={ styles.msg }>You have already taken the quiz today!</p> :
+                <p className={ quizStyles.msg }>You have already taken the quiz today!</p> :
                 <>
                     <ul>
                         {
                             questions.map(q =>
-                                <li key={ q.text }>
+                                <li className={quizStyles.li} key={ q.text }>
                                     { q.text }
                                     {
                                         q.answers.map(ans =>
@@ -134,7 +135,7 @@ export const Quiz = (props) => {
                             )
                         }
                     </ul>
-                    <button onClick={() => {
+                    <button className={quizStyles.btn} onClick={() => {
                         const val = Math.max(red, yellow, green);
                         const today = new Date().getDate();
                         const this_month = new Date().getMonth();
