@@ -1,1 +1,29 @@
 @import 'config.scss';
+
+@import 'config.scss';
+
+.msg {
+    text-align: center;
+    width: 100%;
+    background-color: rgb(228, 44, 44);
+    opacity: 0.6;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(46, 199, 191);
+}
+
+.btn:hover {
+    background-color: rgb(22, 121, 116);
+}
+
+.li {
+    display: block;
+    padding: 7px ;
+}
+
+.header {
+    text-align: center;
+}
