@@ -35,12 +35,21 @@ tr {
     border: 2px solid rgb(18, 156, 41);
 }
 
+td, th, tr, thead, table, tbody {
+    text-align: center;
+}
+
+tr {
+    padding: 5px;
+    border: 2px solid rgb(18, 156, 41);
+}
+
 .red {
-    background-color: #df2b2b;
+    background-color: $pink;
 }
 
 .green {
-    background-color: rgb(6, 190, 21);
+    background-color: #FFE497;
 }
 
 .yellow {
@@ -53,13 +62,25 @@ tr {
      @include userSelect(none);
 }
 
-td span {
+.topleft {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 0;
+    top: 0;
 }
 
-th {
-    padding: 6px;
+* {
+    ::-webkit-scrollbar {
+        width: $scrollbar;
+        background: inherit;
+    }
+
+    ::-webkit-scrollbar-track {
+     width: $scrollbar;
+     background: $white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: $scrollbar;
+     background: rgb(10, 13, 27);
+    }
 }
