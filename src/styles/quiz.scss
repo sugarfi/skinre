@@ -11,23 +11,23 @@
 
 .btn {
     cursor: pointer;
-    background-color: transparent;
+    background-color: rgb(22, 121, 116);
     padding: 5px;
     margin: 5px;
-    color: white;
+    color: $white;
     outline: none;
     border: none;
-    background-color: rgb(22, 121, 116);
+    margin-bottom: 7px !important;
     clear: both;
 }
 
 .btn:hover {
-    background-color: rgb(42, 141, 136);
+    background: rgb(42, 141, 136);
 }
 
 .li {
-    display: block;
-    padding: 7px ;
+    display: inline-block;
+    padding: 7px;
 }
 
 .header {
@@ -39,4 +39,21 @@
     padding: 5px;
     text-align: center;
     cursor: pointer;
+}
+
+* {
+    ::-webkit-scrollbar {
+        width: $scrollbar;
+        background: inherit;
+    }
+
+    ::-webkit-scrollbar-track {
+     width: $scrollbar;
+     background: $white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: $scrollbar;
+     background: rgb(10, 13, 27);
+    }
 }
