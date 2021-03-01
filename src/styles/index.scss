@@ -1,5 +1,7 @@
 @import 'config.scss';
 
+$scrollbar: 3.4px;
+
 *, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
@@ -8,5 +10,22 @@
 
 body, html {
     background-color: #020212;
-    color: #FFFFFF;
+    color: $white;
+}
+
+* {
+    ::-webkit-scrollbar {
+        width: $scrollbar;
+        background: inherit;
+    }
+
+    ::-webkit-scrollbar-track {
+     width: $scrollbar;
+     background: $white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: $scrollbar;
+     background: rgb(10, 13, 27);
+    }
 }
